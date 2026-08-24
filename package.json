@@ -1,0 +1,39 @@
+{
+  "name": "nuxt-newgas-webapp",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "prepare": "nuxt prepare",
+    "typecheck": "nuxt typecheck",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "@nuxt/eslint": "1.2.0",
+    "@nuxt/fonts": "0.11.0",
+    "@pinia/nuxt": "^0.10.1",
+    "@vuepic/vue-datepicker": "^11.0.2",
+    "axios": "^1.9.0",
+    "eslint": "^9.0.0",
+    "jspdf": "^4.2.0",
+    "nuxt": "^3.16.1",
+    "nuxt-gtag": "3.0.2",
+    "pinia": "^3.0.1",
+    "vue": "latest",
+    "vue3-html2pdf": "^1.1.2",
+    "vuetify": "^3.7.3"
+  },
+  "devDependencies": {
+    "@mdi/font": "^7.4.47",
+    "@nuxt/fonts": "^0.10.0",
+    "sass-embedded": "^1.80.3",
+    "typescript": "^5.6.3",
+    "vue-tsc": "^2.1.6",
+    "vuetify-nuxt-module": "^0.18.3"
+  }
+}

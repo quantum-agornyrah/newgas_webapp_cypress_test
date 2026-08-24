@@ -1,0 +1,6 @@
+VITE_API_URL = "https://newgas.blueray.tech/"
+VITE_SESSION_KEY = "session"
+VITE_SESSION_USER = "user"
+VITE_REFRESH_KEY="user-refresh"
+LOCAL_PORT = "3000"
+EXTERNAL_PORT = ""

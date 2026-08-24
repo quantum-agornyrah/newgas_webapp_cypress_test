@@ -1,0 +1,65 @@
+/**
+ * src/styles/settings.scss
+ *
+ * Configures SASS variables and Vuetify overwrites
+ */
+
+// https://vuetifyjs.com/features/sass-variables/`
+// @use 'vuetify/settings' with (
+//   $color-pack: false
+// );
+
+$body-font-family: 'Poppins', sans-serif;
+$heading-font-family:  'Poppins', sans-serif;
+// https://vuetifyjs.com/features/sass-variables/`
+@use 'vuetify/settings' with (
+//   $color-pack: false
+$body-font-family: $body-font-family,
+$heading-font-family: $heading-font-family,
+);
+
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
+.login-bg{
+    background-image: url('../assets/Newgas-login.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.navDrawer_bg{
+    background-image: linear-gradient(#D22028, #7A080D) !important;
+    font-family: 'Montserrat Variable', sans-serif;
+    font-weight: 400 !important;
+}
+
+.main_bg{
+    background-color: #F9F7EF !important;
+}
+
+.date{
+    height: 56px;
+    border-radius: 8px;
+    border-color: #AAAAAA;
+}
+
+.date:hover{
+    border-color: black;
+}
+
+.date:focus{
+    border-color: black;
+}
+
+@media (max-width: 500px) {
+    .date{
+        height: 48px;
+    }
+    // p{
+    //     font-size: 0.8rem;
+    // }
+    
+}

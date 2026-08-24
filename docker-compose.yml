@@ -1,0 +1,10 @@
+services:
+  nuxt-newgas-webapp:
+    build: .
+    image: newgas-customer-webapp
+    container_name: Newgas-customer-webapp
+    ports:
+      - ${EXTERNAL_PORT}:${LOCAL_PORT}
+    env_file:
+      - .env
+    restart: always
