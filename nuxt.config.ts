@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   },
 
   modules: ['@nuxt/fonts', 'vuetify-nuxt-module', '@nuxt/eslint', '@pinia/nuxt', 'nuxt-gtag'],
-  ssr: true,
+  ssr: false,
 
   // when enabling ssr option you need to disable inlineStyles and maybe devLogs
   features: {
