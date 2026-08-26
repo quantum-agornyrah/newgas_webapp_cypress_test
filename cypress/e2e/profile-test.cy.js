@@ -1,4 +1,4 @@
-describe('Gas Refill Flow', () => {
+describe('Profile and Location Flow', () => {
 
   const mockUser = {
     id: '001',
@@ -23,11 +23,15 @@ describe('Gas Refill Flow', () => {
   }
 
   const mockGpsResult = {
+    id: 'gps-001',
     address_code: 'GA-183-8164',
     street: 'Main St',
+    post_code: '00233',
     region: 'Greater Accra',
     district: 'Accra Metropolitan',
-    area: 'Airport Residential Area'
+    area: 'Airport Residential Area',
+    latitude: '5.6037',
+    longitude: '-0.1870'
   }
 
   beforeEach(() => {
@@ -67,10 +71,10 @@ describe('Gas Refill Flow', () => {
     // Visit the profile page and wait for call to execute
     cy.visit('/profile')
     cy.wait('@getUser')
+    cy.wait('@getAddresses')
 
     // Switch to the Accessories tab
     cy.contains('GPS Location').click()
-    cy.wait('@getAddresses')
 
     // Display the necessory elements
     cy.contains('GA-183-8164').should('be.visible')
@@ -81,16 +85,27 @@ describe('Gas Refill Flow', () => {
     // Call out all postal addresses
     cy.intercept('GET', '**/location/ghana_post_address/search/address*', {
       statusCode: 200,
-      body: { items: mockGpsResult }
+      body: mockGpsResult,
     }).as('getGPSAddress')
 
     // Visit the profile page and wait for call to execute
     cy.visit('/profile')
     cy.wait('@getUser')
+    cy.wait('@getAddresses')
 
     cy.contains('GPS Location').click()
+
+    cy.contains('button', 'Add Address').click()
+    cy.contains('Enter delivery location’s details').should('be.visible')
+    cy.get('.v-window-item--active input').first().type('GA-183-8164')
+    cy.contains('button', 'Submit').click()
+
     cy.wait('@getGPSAddress')
 
-    cy.contains('GA-183-8164').should('be.visible')
+    // Verify and scroll to address card details
+    cy.contains('Street').scrollIntoView().should('be.visible')
+    cy.contains('Main St').should('be.visible')
+    cy.contains('Universal Address').parent().should('contain.text', 'GA-183-8164')
+    cy.contains('Airport Residential Area').should('be.visible')
   })
 })
