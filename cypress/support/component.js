@@ -1,30 +1,41 @@
 import { mount } from 'cypress/vue'
 import { createPinia } from 'pinia'
-import { createVuetify } from 'vuetify'
+import { createVuetify, useDisplay } from 'vuetify'
 import { createRouter, createMemoryHistory } from 'vue-router'
+import { h } from 'vue'
+import { VApp } from 'vuetify/components'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 
 import 'vuetify/styles'
 import '@mdi/font/css/materialdesignicons.css'
 
-// Create a single Vuetify instance for component tests
-const vuetify = createVuetify({ components, directives })
-
 Cypress.Commands.add('mount', (component, options = {}) => {
-  // Create a fresh Pinia instance per test to isolate state
-  const pinia = createPinia()
+  options.global = options.global || {}
+  options.global.plugins = options.global.plugins || []
 
+  const vuetify = createVuetify({ components, directives })
+  const pinia = createPinia()
+  window.useDisplay = useDisplay
+
+  // Dummy router example
   const router = createRouter({
     history: createMemoryHistory(),
     routes: [
-      { path: '/', component: { template: '<div></div>' } }
+      { path: '/', component: { template: 'div' } }
     ],
   })
 
-  options.global = options.global || {}
-  options.global.plugins = options.global.plugins || []
-  options.global.plugins.push(vuetify, pinia)
+  options.global.plugins.push(vuetify, pinia, router)
 
-  return mount(component, options)
+  const wrapperComponent = {
+      render () {
+          return h(components.VApp, null, {
+              default: () => h(component, options.props || {}),
+          })
+      },
+  }
+
+  return mount(wrapperComponent, options)
+
 })

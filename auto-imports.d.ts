@@ -10,18 +10,25 @@ export {}
 declare global {
   const EffectScope: typeof import('vue').EffectScope
   const acceptHMRUpdate: typeof import('pinia').acceptHMRUpdate
+  const changePIn: typeof import('./app/utils/constants').changePIn
+  const changePhone: typeof import('./app/utils/constants').changePhone
   const computed: typeof import('vue').computed
+  const convertToInternationalFormat: typeof import('./app/utils/constants').convertToInternationalFormat
   const createApp: typeof import('vue').createApp
   const createPinia: typeof import('pinia').createPinia
   const customRef: typeof import('vue').customRef
   const defineAsyncComponent: typeof import('vue').defineAsyncComponent
   const defineComponent: typeof import('vue').defineComponent
   const defineStore: typeof import('pinia').defineStore
+  const deleteRequestHandler: typeof import('./app/utils/httpHandler').deleteRequestHandler
   const effectScope: typeof import('vue').effectScope
+  const formatPhoneNumber: typeof import('./app/utils/constants').formatPhoneNumber
   const getActivePinia: typeof import('pinia').getActivePinia
   const getCurrentInstance: typeof import('vue').getCurrentInstance
   const getCurrentScope: typeof import('vue').getCurrentScope
   const getCurrentWatcher: typeof import('vue').getCurrentWatcher
+  const getRandomLightColors: typeof import('./app/utils/colors').getRandomLightColors
+  const getRequestHandler: typeof import('./app/utils/httpHandler').getRequestHandler
   const h: typeof import('vue').h
   const inject: typeof import('vue').inject
   const isProxy: typeof import('vue').isProxy
@@ -52,7 +59,12 @@ declare global {
   const onUnmounted: typeof import('vue').onUnmounted
   const onUpdated: typeof import('vue').onUpdated
   const onWatcherCleanup: typeof import('vue').onWatcherCleanup
+  const patchRequestHandler: typeof import('./app/utils/httpHandler').patchRequestHandler
+  const postFileHandler: typeof import('./app/utils/httpHandler').postFileHandler
+  const postRequestHandler: typeof import('./app/utils/httpHandler').postRequestHandler
   const provide: typeof import('vue').provide
+  const putFileHandler: typeof import('./app/utils/httpHandler').putFileHandler
+  const putRequestHandler: typeof import('./app/utils/httpHandler').putRequestHandler
   const reactive: typeof import('vue').reactive
   const readonly: typeof import('vue').readonly
   const ref: typeof import('vue').ref

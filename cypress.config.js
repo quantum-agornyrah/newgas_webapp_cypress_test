@@ -6,9 +6,12 @@ import { fileURLToPath, URL } from 'node:url';
 export default defineConfig({
   e2e: {
     baseUrl: 'http://localhost:3000',
-    specPattern: 'cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
-    supportFile: 'cypress/support/e2e.ts',
+
+    setupNodeEvents(on, config) {
+      // implement node event listeners here
+    },
   },
+
   component: {
     devServer: {
       framework: 'vue',
@@ -18,7 +21,7 @@ export default defineConfig({
           vue(),
           AutoImport({
             imports: ['vue', 'pinia', 'vue-router'],
-            dirs: ['./app/stores'],
+            dirs: ['./app/stores', './app/utils'],
           }),
         ],
         resolve: {
@@ -29,12 +32,8 @@ export default defineConfig({
         },
       },
     },
-    indexHtmlFile: 'cypress/support/component-index.html',
-    specPattern: 'cypress/component/**/*.cy.{js,jsx,ts,tsx}',
-    supportFile: 'cypress/support/component.js',
   },
+
   viewportWidth: 1280,
-  viewportHeight: 720,
-  video: true,
-  screenshotOnRunFailure: true,
+  viewportHeight: 900,
 });
