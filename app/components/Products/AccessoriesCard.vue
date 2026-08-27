@@ -24,9 +24,6 @@ const subtract = () => {
     }
 }
 
-
-
-
 const addToCart = async(item:any) => {
     loading.value = true
 
