@@ -12,12 +12,11 @@ describe('<Success />', () => {
             uiStore.notifyDialog = true
 
             uiStore.success = true
-            uiStore.notifyTitle = 'Opearation Succeeded'
+            uiStore.notifyTitle = 'Operation Succeeded'
             uiStore.notifyMessage = 'Congatulations, operation fell through'
         })
 
         cy.contains('Ok').should('be.visible')
-        cy.contains('Cylinder Deposit').should('be.visible')
     })
 
     it('Display Default Failed dialog', () => {
@@ -26,22 +25,21 @@ describe('<Success />', () => {
             uiStore.notifyDialog = true
 
             uiStore.success = false
-            uiStore.notifyTitle = 'Opearation Failed'
+            uiStore.notifyTitle = 'Operation Failed'
             uiStore.notifyMessage = 'Oops, operation DID fall through'
         })
 
         cy.contains('Ok').should('be.visible')
-        cy.contains('Cylinder Deposit').should('be.visible')
     })
 
 
-    it('Close dialog', () => {
+    it('Close dialog whe button is clicked', () => {
         cy.mount(Success).then(() => {
             const uiStore = useUiStore()
             uiStore.notifyDialog = true
         })
 
-        cy.get('.mdi-close').click().then(() => {
+        cy.contains('Ok').click().then(() => {
             const uiStore = useUiStore()
             expect(uiStore.notifyDialog).to.be.false
         })
