@@ -103,7 +103,7 @@ describe('Gas Refill Flow', () => {
       body: { items: mockAccessories }
     }).as('getAccessories')
 
-    // Visit the products page and wait for call to execute
+    // Visit the products page and wait for call to execute 
     cy.visit('/products')
     cy.wait('@getCategories')
 
